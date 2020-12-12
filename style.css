@@ -1,4 +1,79 @@
-h1 {
+.container {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  background-attachment: fixed;
+  font-family: "Special Elite", cursive;
+}
+
+h1,
+h2,
+h3 {
+  color: #87431d;
+}
+
+i {
+  color: #290001;
+  font-size: 50px;
+}
+
+strong,
+#showTemp {
+  font-size: 80px;
+}
+
+form {
+  text-align: right;
+  display: inline;
+}
+
+input[type="submit"] {
+  background: #87431d;
+  color: #fbe5cb;
+  padding: 5px 5px;
+  font-size: 24px;
+}
+input[type="text"] {
+  background: #f7ceb6;
+  border: 2px solid #87431d;
+  border-radius: 4px;
+  color: #87431d;
+  padding: 5px 5px;
+  font-size: 26px;
+}
+
+.incoming {
+  padding: 20px 10px;
+  margin: 100px 10px 10px 10px;
   text-align: center;
-  color: #885df1;
+}
+
+.current {
+  padding: 50px 50px;
+  margin: 50px 30px;
+}
+
+.currentTempCelcius {
+  font-size: 40px;
+  display: inline;
+  background-color: transparent;
+  border: none;
+}
+
+.currentTempFahrenheit {
+  font-size: 40px;
+  display: inline;
+  background-color: transparent;
+  border: none;
+}
+
+.weather-details,
+.weather-details-1 {
+  text-align: right;
+  color: #87431d;
+  font-size: 30px;
+}
+
+.lala,
+#showTemp {
+  font-size: 40;
+  display: inline;
 }
