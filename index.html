@@ -1,13 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Hello Git!</h1>
-    <script src="script.js"></script>
-  </body>
+<html>
+
+<head>
+
+  <title>Parcel Sandbox</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://kit.fontawesome.com/1bb3fe57c3.js" crossorigin="anonymous">
+  </script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="current">
+      <div class="row">
+        <div class="col-6">
+          <h1>
+            Auckland
+          </h1>
+        </div>
+        <div class="col-6">
+          <form id="search-city">
+            <input type="text" id="chosen-city" placeholder="Enter city here"> </input>
+            <input type="submit" id="chosen-place" value="Search"></input>
+
+          </form>
+        </div>
+      </div>
+
+      <h2>
+        27 September 2020 08:00AM
+      </h2>
+
+      <h3>
+        Partly cloudy
+      </h3>
+
+      <div class="row">
+        <div class="col-6">
+
+          <p class="tempNow" id="showTemp">
+
+            <strong>13</strong>
+
+          </p>
+          <i class="fas fa-cloud-sun"></i>
+          <button class="currentTempCelcius" id="celcius"> °C | </button>
+
+          <button class="currentTempFahrenheit" id="fahrenheit"> °F
+          </button>
+
+
+        </div>
+        <div class="col-6">
+
+          <p class="weather-details" id="humidity">
+
+            Humidity: 67%
+            <br />
+          </p>
+          <p class="weather-details-1" id="windSpeed">
+            Wind: 40km/h
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="incoming">
+      <div class="row">
+        <div class="col-3">
+
+          <i class="fas fa-cloud-sun"></i>
+          <br />
+          <p>
+            Partly cloudy
+            <br />
+            11 AM
+            <br />
+          </p>
+          <p id="showTemp1">14 °C</p>
+
+        </div>
+
+        <div class="col-3">
+
+          <i class="fas fa-sun"></i>
+
+          <br />
+          <p>
+            Mostly Sunny
+            <br />
+            3 PM
+            <br />
+          </p>
+          <p>17°C</p>
+
+        </div>
+
+        <div class="col-3">
+
+          <i class="fas fa-cloud"></i>
+          <br />
+          <p>
+            Cloudy
+            <br />
+            5 PM
+            <br />
+          </p>
+          <p>15°C</p>
+
+        </div>
+        <div class="col-3">
+
+          <i class="fas fa-cloud"></i>
+          <br />
+          <p>
+            Cloudy
+            <br />
+            9 PM
+            <br />
+          </p>
+          <p>15°C</p>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+</body>
+<script src="source.js"></script>
+
 </html>
