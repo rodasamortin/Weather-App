@@ -33,6 +33,8 @@ let months = [
   "Dec",
 ];
 
+const apiKey = "xN7AND1IL4lztSsaDjOey5C55Hy64cSA";
+
 month = months[now.getMonth()];
 h2.innerHTML = `${day}, ${date} ${month} ${year}, ${hour}:${minute}`;
 
@@ -44,32 +46,60 @@ function searchCity(event) {
   let chosenCity = document.querySelector("#chosen-city");
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${chosenCity.value}`.toUpperCase();
-  let apiKey = "39a7ee9df8b34ac078f7a18503bcb052";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity.value}&appid=${apiKey}&units=metric`;
+  console.log(`chosenCity is ${chosenCity}`);
 
-  axios.get(`${apiUrl}`).then(showWeather);
+  let locationApiUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${chosenCity.value}`;
+  console.log(`locationApiUrl is ${locationApiUrl}`);
+  console.log(axios.get(`${locationApiUrl}`));
+  axios.get(`${locationApiUrl}`).then(getWeather);
+}
+
+function getWeather(cityObject) {
+  console.log(`locationCity Key is ${cityObject.data[0].Key}`);
+  let locationKey = cityObject.data[0].Key;
+
+  let weatherDetailsUrl = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?details=true&apikey=${apiKey}`;
+  console.log(`weatherDetailsUrl is ${weatherDetailsUrl}`);
+
+  axios.get(`${weatherDetailsUrl}`).then(showWeather);
 }
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
 
-function showWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+function showWeather(currentWeatherConditions) {
+  console.log(currentWeatherConditions);
+
+  let temperature = Math.round(
+    currentWeatherConditions.data[0].ApparentTemperature.Metric.Value
+  );
+  console.log(`${temperature}`);
+
+  //TO DO: update line 90 and down, follow line 83
 
   let humid = document.querySelector("#humidity");
-  let currentHumidity = response.data.main.humidity;
+  let currentHumidity = currentWeatherConditions.data[0].RelativeHumidity;
   humid.innerHTML = `Humidity : ${currentHumidity} %`;
 
   let wind = document.querySelector("#windSpeed");
-  let currentWindSpeed = response.data.wind.speed;
+  let currentWindSpeed =
+    currentWeatherConditions.data[0].Wind.Speed.Metric.Value;
   wind.innerHTML = `Wind: ${currentWindSpeed} km/h`;
 
   let h3 = document.querySelector("h3");
-  let description = response.data.weather[0].main;
+  let description = currentWeatherConditions.data[0].WeatherText;
   h3.innerHTML = `${description}`;
 
-  let city = response.data.name;
+  let celciusTemp = document.querySelector(
+    "#showTemp"
+  ); /*try use id #celcius later*/
+  let tempMetric = currentWeatherConditions.data[0].Temperature.Metric.Value;
+  celciusTemp.innerHTML = `${tempMetric}`;
 
-  let htmlTemp = document.querySelector("#showTemp");
-  htmlTemp.innerHTML = `${temperature}`;
+  let fahrenheitTemp = document.querySelector("#fahrenheit");
+  let tempImperial =
+    currentWeatherConditions.data[0].Temperature.Imperial.Value;
+  fahrenheitTemp.innerHTML = `${tempImperial}`;
+
+  let iconElement = document.querySelector("#icon-top");
 }
