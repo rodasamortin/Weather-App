@@ -75,7 +75,9 @@ function showWeather(currentWeatherConditions) {
   );
   console.log(`${temperature}`);
 
-  //TO DO: update line 90 and down, follow line 83
+  let h2 = document.querySelector("#dateAndTime");
+  let dateTime = currentWeatherConditions.data[0].LocalObservationDateTime;
+  h2.innerHTML = `${dateTime}`;
 
   let humid = document.querySelector("#humidity");
   let currentHumidity = currentWeatherConditions.data[0].RelativeHumidity;
