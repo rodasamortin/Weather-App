@@ -76,7 +76,7 @@ function showWeather(currentWeatherConditions) {
   console.log(`${temperature}`);
 
   let h2 = document.querySelector("#dateAndTime");
-  let dateTime = currentWeatherConditions.data[0].LocalObservationDateTime;
+  let dateTime = [currentWeatherConditions.data[0].EpochTime * 1000];
   h2.innerHTML = `${dateTime}`;
 
   let humid = document.querySelector("#humidity");
@@ -92,16 +92,19 @@ function showWeather(currentWeatherConditions) {
   let description = currentWeatherConditions.data[0].WeatherText;
   h3.innerHTML = `${description}`;
 
-  let celciusTemp = document.querySelector(
-    "#showTemp"
-  ); /*try use id #celcius later*/
+  let celciusTemp = document.querySelector("#showTemp");
   let tempMetric = currentWeatherConditions.data[0].Temperature.Metric.Value;
   celciusTemp.innerHTML = `${tempMetric}`;
 
-  let fahrenheitTemp = document.querySelector("#fahrenheit");
+  /*let fahrenheitTemp = document.querySelector("#fahrenheit");
   let tempImperial =
     currentWeatherConditions.data[0].Temperature.Imperial.Value;
   fahrenheitTemp.innerHTML = `${tempImperial}`;
+  
+  TO DO : Upon click*/
 
   let iconElement = document.querySelector("#icon-top");
+
+  /* TO DO : Update picture */
+  /*TO DO: Put Humidity*/
 }
