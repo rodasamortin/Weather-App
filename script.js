@@ -1,44 +1,49 @@
-let now = new Date();
 
-let h2 = document.querySelector("h2");
-let year = now.getFullYear();
-let date = now.getDate();
-let hour = now.getHours();
 
-if (hour < 10) {
-  hour = `0${hour}`;
-}
+    let now = new Date();
 
-let minute = now.getMinutes();
+    let h2 = document.querySelector("#dateAndTime");
+    let year = now.getFullYear();
+    let date = now.getDate();
+    let hour = now.getHours();
 
-if (minute < 10) {
-  minute = `0${minute}`;
-}
+    if (hour < 10) {
+      hour = `0${hour}`;
+    }
 
-let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
-let day = days[now.getDay()];
+    let minute = now.getMinutes();
 
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "July",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+    if (minute < 10) {
+      minute = `0${minute}`;
+    }
 
-const apiKey = "xN7AND1IL4lztSsaDjOey5C55Hy64cSA";
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
+    let day = days[now.getDay()];
 
-month = months[now.getMonth()];
-h2.innerHTML = `${day}, ${date} ${month} ${year}, ${hour}:${minute}`;
+    let months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
 
-//Search Engine
+    const apiKey = "WnRkOTPycCoRCeCJYDdYMwmR2zF8aPFC";
+
+    let month = months[now.getMonth()];
+    h2.innerHTML = `${day}, ${date} ${month} ${year}, ${hour}:${minute}`;
+
+let form = document.querySelector("#search-city");
+form.addEventListener("submit", searchCity);
+    
+//Search Engine 
 
 function searchCity(event) {
   event.preventDefault();
@@ -48,11 +53,15 @@ function searchCity(event) {
   h1.innerHTML = `${chosenCity.value}`.toUpperCase();
   console.log(`chosenCity is ${chosenCity}`);
 
+
   let locationApiUrl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apiKey}&q=${chosenCity.value}`;
   console.log(`locationApiUrl is ${locationApiUrl}`);
   console.log(axios.get(`${locationApiUrl}`));
   axios.get(`${locationApiUrl}`).then(getWeather);
 }
+
+
+
 
 function getWeather(cityObject) {
   console.log(`locationCity Key is ${cityObject.data[0].Key}`);
@@ -64,10 +73,10 @@ function getWeather(cityObject) {
   axios.get(`${weatherDetailsUrl}`).then(showWeather);
 }
 
-let form = document.querySelector("form");
-form.addEventListener("submit", searchCity);
 
-function showWeather(currentWeatherConditions) {
+
+function showWeather(currentWeatherConditions)
+{
   console.log(currentWeatherConditions);
 
   let temperature = Math.round(
@@ -75,9 +84,6 @@ function showWeather(currentWeatherConditions) {
   );
   console.log(`${temperature}`);
 
-  let h2 = document.querySelector("#dateAndTime");
-  let dateTime = [currentWeatherConditions.data[0].EpochTime * 1000];
-  h2.innerHTML = `${dateTime}`;
 
   let humid = document.querySelector("#humidity");
   let currentHumidity = currentWeatherConditions.data[0].RelativeHumidity;
@@ -96,15 +102,22 @@ function showWeather(currentWeatherConditions) {
   let tempMetric = currentWeatherConditions.data[0].Temperature.Metric.Value;
   celciusTemp.innerHTML = `${tempMetric}`;
 
-  /*let fahrenheitTemp = document.querySelector("#fahrenheit");
+  /*
+
+  let fahrenheitTemp = document.querySelector("#fahrenheit");
   let tempImperial =
     currentWeatherConditions.data[0].Temperature.Imperial.Value;
   fahrenheitTemp.innerHTML = `${tempImperial}`;
   
-  TO DO : Upon click*/
+  //TO DO : Upon click
 
   let iconElement = document.querySelector("#icon-top");
 
   /* TO DO : Update picture */
   /*TO DO: Put Humidity*/
 }
+
+
+
+
+//updateDateTime(); 
