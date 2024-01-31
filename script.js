@@ -2,7 +2,7 @@
 
     let now = new Date();
 
-    let h2 = document.querySelector("#dateAndTime");
+   let h2 = document.querySelector("#dateAndTime");
     let year = now.getFullYear();
     let date = now.getDate();
     let hour = now.getHours();
@@ -35,7 +35,7 @@
       "Dec",
     ];
 
-    const apiKey = "WnRkOTPycCoRCeCJYDdYMwmR2zF8aPFC";
+    const apiKey = "vJfvJydBST7QPFjjR5P0thAMklSAWUoe";
 
     let month = months[now.getMonth()];
     h2.innerHTML = `${day}, ${date} ${month} ${year}, ${hour}:${minute}`;
@@ -102,12 +102,12 @@ function showWeather(currentWeatherConditions)
   let tempMetric = currentWeatherConditions.data[0].Temperature.Metric.Value;
   celciusTemp.innerHTML = `${tempMetric}`;
 
-  /*
+  
 
   let fahrenheitTemp = document.querySelector("#fahrenheit");
   let tempImperial =
-    currentWeatherConditions.data[0].Temperature.Imperial.Value;
-  fahrenheitTemp.innerHTML = `${tempImperial}`;
+   currentWeatherConditions.data[0].Temperature.Imperial.Value;
+ fahrenheitTemp.innerHTML = `${tempImperial}`;
   
   //TO DO : Upon click
 

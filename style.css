@@ -12,12 +12,12 @@ h3 {
 
 i {
   color: #290001;
-  font-size: 50px;
+  font-size: 80px;
 }
 
 strong,
 #showTemp {
-  font-size: 80px;
+  font-size: 40px;
 }
 
 form {
@@ -43,6 +43,8 @@ input[type="text"] {
 img {
   size: 500px;
 }
+
+
 
 .incoming {
   padding: 20px 10px;
@@ -78,6 +80,6 @@ img {
 
 .lala,
 #showTemp {
-  font-size: 40;
+  font-size: 60px;
   display: inline;
 }
